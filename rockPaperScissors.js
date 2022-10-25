@@ -1,9 +1,9 @@
 function playRound(playerSelection, computerSelection) {
     if(playerSelection === computerSelection){
         return `Draw!`;
-    } else if((playerSelection == "rock" && computerSelection ==="scissors") || 
-    (playerSelection == "paper" && computerSelection ==="rock") ||
-    (playerSelection == "scissors" && computerSelection ==="paper")) {
+    } else if((playerSelection === "rock" && computerSelection ==="scissors") || 
+    (playerSelection === "paper" && computerSelection ==="rock") ||
+    (playerSelection === "scissors" && computerSelection ==="paper")) {
         return `You Win! ${playerSelection} beats ${computerSelection}.`;
     } else {
         return `You Lose! ${playerSelection} loses to ${computerSelection}`
