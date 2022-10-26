@@ -33,24 +33,29 @@ function game(){
         const playerChoice = prompt("What's your choice? [rock/paper/scissors]"); //Get the player's choice
         const computerChoice = getComputerChoice(); //Get the computer's choice
 
-        let msg = playRound(playerChoice, computerChoice); //Play the round out, and get the message of either you winning, losing, or a draw
-        alert(msg); //Display the message to the user
-
-        console.log(`player: ${playerChoice} computer: ${computerChoice}`); // log the player's choice and computer's choice to the console
-
-        if(msg === "Draw!"){ //if it is a draw, decrement i to add another round to the game
+        if(playerChoice !== "scissors" && playerChoice !== "paper" && playerChoice !== "rock"){
+            alert(`${playerChoice} is not a valid response`);
             i--;
-        } else if(msg.charAt(4) ==='W'){ // if it says You Win!
-            playerScore++;
-        } else { // If it says you Lose! Not a win and not a draw
-            computerScore++;
-        }
+        } else {
+            let msg = playRound(playerChoice, computerChoice); //Play the round out, and get the message of either you winning, losing, or a draw
+            alert(msg); //Display the message to the user
 
+            console.log(`player: ${playerChoice} computer: ${computerChoice}`); // log the player's choice and computer's choice to the console
+
+            if(msg === "Draw!"){ //if it is a draw, decrement i to add another round to the game
+                i--;
+            } else if(msg.includes('Win')){ // if it says You Win!
+                playerScore++;
+            } else { // If it says you Lose! Not a win and not a draw
+                computerScore++;
+            }
+
+        }
     }
 
     let endMsg; //Creating the final message for when the game is ended
     if(playerScore > computerScore){
-         endMsg = `You won the game!` 
+        endMsg = `You won the game!` 
     } else {
         endMsg = `Better luck next time!`
     }
