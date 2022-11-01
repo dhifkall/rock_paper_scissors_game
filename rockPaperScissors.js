@@ -27,48 +27,57 @@ function game(){
     let playerScore = 0;
     let computerScore = 0;
 
-    //For loop: Play rock paper scissors for 3 rounds. Every draw, add an extra round to make sure there are 3 matches
+    //For loop: Play rock paper scissors for 3 rounds.
     for(var i = 0; i < 3; i++){
 
-        const playerChoice = prompt("What's your choice? [rock/paper/scissors]"); //Get the player's choice
-        const computerChoice = getComputerChoice(); //Get the computer's choice
+        //Get the player's choice
+        const playerChoice = prompt("What's your choice? [rock/paper/scissors]"); 
+         //Get the computer's choice
+        const computerChoice = getComputerChoice();
 
+        //If the user enters an invalid response, add an extra round
         if(playerChoice !== "scissors" && playerChoice !== "paper" && playerChoice !== "rock"){
             alert(`${playerChoice} is not a valid response`);
             i--;
         } else {
-            let msg = playRound(playerChoice, computerChoice); //Play the round out, and get the message of either you winning, losing, or a draw
-            alert(msg); //Display the message to the user
+            //Play the round out, and get the message of either you winning, losing, or a draw
+            let msg = playRound(playerChoice, computerChoice); 
+            //Display the message to the user
+            alert(msg); 
 
-            console.log(`player: ${playerChoice} computer: ${computerChoice}`); // log the player's choice and computer's choice to the console
-
-            if(msg === "Draw!"){ //if it is a draw, decrement i to add another round to the game
+            // Log the player's choice and computer's choice to the console for debugging
+            console.log(`player: ${playerChoice} computer: ${computerChoice}`); 
+            
+            //Every draw, add an extra round to make sure there are 3 matches
+            if(msg === "Draw!"){ 
                 i--;
             } else if(msg.includes('Win')){ // if it says You Win!
                 playerScore++;
-            } else { // If it says you Lose! Not a win and not a draw
+            } else { // If it says you Lose!
                 computerScore++;
             }
 
         }
     }
 
-    let endMsg; //Creating the final message for when the game is ended
+    //Creating the final message for when the game is ended
+    let endMsg;
     if(playerScore > computerScore){
         endMsg = `You won the game!` 
     } else {
         endMsg = `Better luck next time!`
     }
+
+    //Add final scores to the final message
     endMsg += `
 Player Score: ${playerScore}
 Computer Score: ${computerScore}`;
 
-    alert(endMsg); //Show the final winning/ losing message to the user
+    //Show the final winning/ losing message to the user
+    alert(endMsg); 
 }
 
-game(); //Play the Game on refresh/ first opening the browser window!
+//Play the Game on refresh/ first opening the browser window!
+game(); 
 
-// const playerSelection = "rock";
-// const computerSelection = getComputerChoice();
-// console.log(playRound(playerSelection, computerSelection));
   
