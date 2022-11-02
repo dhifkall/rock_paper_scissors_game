@@ -48,9 +48,10 @@ function game(){
             // Log the player's choice and computer's choice to the console for debugging
             console.log(`player: ${playerChoice} computer: ${computerChoice}`); 
             
-            //Every draw, add an extra round to make sure there are 3 matches
+            //Every draw, add a point to both user and computer
             if(msg === "Draw!"){ 
-                i--;
+                playerScore++;
+                computerScore++;
             } else if(msg.includes('Win')){ // if it says You Win!
                 playerScore++;
             } else { // If it says you Lose!
@@ -62,7 +63,9 @@ function game(){
 
     //Creating the final message for when the game is ended
     let endMsg;
-    if(playerScore > computerScore){
+    if(playerScore === computerScore){
+        endMsg = `You tied!`;
+    }else if(playerScore > computerScore){
         endMsg = `You won the game!` 
     } else {
         endMsg = `Better luck next time!`
